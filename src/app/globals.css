@@ -1,26 +1,66 @@
 @import "tailwindcss";
 
+@theme {
+  --color-nerotech-teal: #12a3a2;
+  --color-nerotech-dark-teal: #0d6e70;
+  --color-nerotech-charcoal: #18232f;
+  --color-nerotech-off-white: #f3f7f7;
+  --color-nerotech-gold: #d9a441;
+  --color-nerotech-mid-grey: #6b7280;
+  --color-nerotech-soft-grey: #e5ecec;
+
+  --font-heading: var(--font-plus-jakarta);
+  --font-body: var(--font-manrope);
+
+  --radius-nerotech: 1.5rem;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: light;
+  --background: #f3f7f7;
+  --foreground: #18232f;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-manrope), system-ui, sans-serif;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: #12a3a2;
+  color: #ffffff;
+}
+
+a {
+  text-underline-offset: 4px;
+}
+
+button,
+a {
+  transition:
+    color 180ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease,
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
