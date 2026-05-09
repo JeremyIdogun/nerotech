@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Mail, MapPin } from "lucide-react";
 import { siteConfig } from "@/content/site";
 import { services } from "@/content/services";
@@ -11,9 +12,12 @@ export function Footer() {
         <div className="grid gap-12 lg:grid-cols-4">
           <div className="lg:col-span-1">
             <Link href="/" className="mb-5 flex items-center gap-3">
-              <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#12A3A2] text-sm font-bold text-white">
-                N
-              </span>
+              <Image
+                src="/brand/icon.png"
+                alt="NeroTech mark"
+                width={36}
+                height={36}
+              />
               <span className="font-heading text-lg font-bold tracking-tight text-white">
                 NeroTech
               </span>

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { navItems } from "@/content/navigation";
@@ -13,9 +14,13 @@ export function Header() {
     <header className="sticky top-0 z-50 border-b border-[#E5ECEC] bg-white/95 backdrop-blur-sm">
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-5 py-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-3">
-          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#12A3A2] text-sm font-bold text-white">
-            N
-          </span>
+          <Image
+            src="/brand/icon.png"
+            alt="NeroTech mark"
+            width={36}
+            height={36}
+            priority
+          />
           <span className="font-heading text-lg font-bold tracking-tight text-[#18232F]">
             NeroTech
           </span>
