@@ -13,17 +13,14 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-[#E5ECEC] bg-white/95 backdrop-blur-sm">
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-5 py-4 sm:px-6 lg:px-8">
-        <Link href="/" className="flex items-center gap-3">
+        <Link href="/" className="flex items-center">
           <Image
-            src="/brand/icon.png"
-            alt="NeroTech mark"
-            width={36}
+            src="/brand/logo.png"
+            alt="NeroTech Consulting"
+            width={144}
             height={36}
             priority
           />
-          <span className="font-heading text-lg font-bold tracking-tight text-[#18232F]">
-            NeroTech
-          </span>
         </Link>
 
         <nav className="hidden items-center gap-8 lg:flex" aria-label="Main navigation">

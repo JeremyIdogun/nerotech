@@ -11,16 +11,14 @@ export function Footer() {
       <div className="mx-auto w-full max-w-7xl px-5 py-16 sm:px-6 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-4">
           <div className="lg:col-span-1">
-            <Link href="/" className="mb-5 flex items-center gap-3">
+            <Link href="/" className="mb-5 flex items-center">
               <Image
-                src="/brand/icon.png"
-                alt="NeroTech mark"
-                width={36}
+                src="/brand/logo.png"
+                alt="NeroTech Consulting"
+                width={144}
                 height={36}
+                style={{ filter: "brightness(0) invert(1)" }}
               />
-              <span className="font-heading text-lg font-bold tracking-tight text-white">
-                NeroTech
-              </span>
             </Link>
             <p className="text-sm leading-7 text-white/60">
               A data-driven consulting firm helping institutions modernise systems, improve
