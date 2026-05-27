@@ -1,4 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="none">
-  <rect width="36" height="36" x="2" y="2" rx="8" fill="#12A3A2"/>
-  <text x="20" y="27" font-family="sans-serif" font-weight="700" font-size="18" text-anchor="middle" fill="white">N</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <!-- Left bar -->
+  <rect x="4" y="3" width="26" height="94" fill="#12A3A2"/>
+  <!-- Diagonal bar: top connects to right edge of left bar, bottom connects to left edge of right bar -->
+  <polygon points="30,3 54,3 70,97 46,97" fill="#12A3A2"/>
+  <!-- Right bar with notch cut from bottom-right corner -->
+  <polygon points="70,3 96,3 96,74 83,74 83,97 70,97" fill="#12A3A2"/>
 </svg>

@@ -1,5 +1,11 @@
-import { Container } from "@/components/ui/Container";
-import { SectionHeader } from "@/components/ui/SectionHeader";
+import { Reveal } from "@/components/ui/Reveal";
+import { Stagger } from "@/components/ui/Stagger";
+
+interface ApproachSectionProps {
+  eyebrow?: string;
+  title?: string;
+  description?: string;
+}
 
 const steps = [
   {
@@ -28,30 +34,52 @@ const steps = [
   },
 ];
 
-export function ApproachSection() {
+export function ApproachSection({
+  eyebrow = "Our approach",
+  title = "From complexity to clarity, then from strategy to delivery.",
+  description = "We combine advisory thinking with practical implementation, helping clients move from complexity to clarity and from strategy to measurable delivery.",
+}: ApproachSectionProps) {
   return (
-    <section className="bg-[#F3F7F7] py-20 sm:py-28">
-      <Container>
-        <SectionHeader
-          eyebrow="Our approach"
-          title="From complexity to clarity, then from strategy to delivery."
-          description="We combine advisory thinking with practical implementation, helping clients move from complexity to clarity and from strategy to measurable delivery."
-        />
+    <section className="bg-nerotech-off-white py-20 px-5 sm:px-6 lg:px-14">
+      <div className="mx-auto max-w-7xl">
+        {/* Header */}
+        <Reveal>
+          <div className="mb-13">
+            <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.20em] text-nerotech-teal">
+              {eyebrow}
+            </p>
+            <h2 className="font-heading max-w-[560px] text-[38px] font-extrabold leading-[1.1] tracking-[-0.028em] text-nerotech-charcoal">
+              {title}
+            </h2>
+            {description && (
+              <p className="mt-4 max-w-[540px] text-[15px] leading-[1.78] text-nerotech-mid-grey">
+                {description}
+              </p>
+            )}
+          </div>
+        </Reveal>
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {/* Steps grid */}
+        <Stagger gap={0.09} className="grid grid-cols-2 gap-7 lg:grid-cols-4">
           {steps.map((step) => (
-            <div key={step.number} className="relative">
-              <div className="mb-4 font-heading text-5xl font-bold text-[#12A3A2]/20">
+            <div key={step.number}>
+              {/* Oversized ghost number */}
+              <p className="font-heading -mb-3.5 text-[84px] font-extrabold leading-none tracking-[-0.06em] text-nerotech-teal/[0.075]">
                 {step.number}
+              </p>
+              {/* Teal divider */}
+              <div className="mt-5 border-t-2 border-nerotech-teal pt-5">
+                <h3 className="font-heading mb-2.5 text-[18px] font-bold text-nerotech-charcoal">
+                  {step.title}
+                </h3>
+                <p className="text-[13px] leading-[1.72] text-nerotech-mid-grey">
+                  {step.description}
+                </p>
               </div>
-              <h3 className="font-heading mb-3 text-lg font-bold text-[#18232F]">
-                {step.title}
-              </h3>
-              <p className="text-sm leading-7 text-[#6B7280]">{step.description}</p>
             </div>
           ))}
-        </div>
-      </Container>
+        </Stagger>
+      </div>
     </section>
   );
 }

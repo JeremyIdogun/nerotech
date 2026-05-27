@@ -1,52 +1,63 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-import { Container } from "@/components/ui/Container";
-import { SectionHeader } from "@/components/ui/SectionHeader";
+import { Reveal } from "@/components/ui/Reveal";
 import { services } from "@/content/services";
-import { iconMap } from "@/lib/icons";
 
 export function PillarsSection() {
   return (
-    <section className="bg-white py-20 sm:py-28">
-      <Container>
-        <SectionHeader
-          eyebrow="Service pillars"
-          title="Four connected pillars for practical transformation."
-          description="NeroTech brings advisory thinking, technical execution and capability transfer into one joined-up delivery model."
-          align="center"
-        />
+    <section className="bg-white py-20 px-5 sm:px-6 lg:px-14">
+      <div className="mx-auto max-w-7xl">
+        {/* Header row */}
+        <Reveal>
+          <div className="mb-12 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.20em] text-nerotech-teal">
+                Service pillars
+              </p>
+              <h2 className="font-heading max-w-[400px] text-[38px] font-extrabold leading-[1.1] tracking-[-0.028em] text-nerotech-charcoal">
+                Four connected pillars for practical transformation.
+              </h2>
+            </div>
+            <p className="text-right text-[13px] leading-[1.7] text-nerotech-mid-grey sm:max-w-[260px]">
+              Advisory thinking, technical execution and capability transfer in one
+              joined-up model.
+            </p>
+          </div>
+        </Reveal>
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {services.map((service) => {
-            const Icon = iconMap[service.iconName];
-            return (
-              <div
-                key={service.slug}
-                className="group flex flex-col rounded-3xl border border-[#E5ECEC] bg-[#F3F7F7] p-6 transition-shadow hover:shadow-md"
-              >
-                <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-xl bg-[#12A3A2]/10">
-                  {Icon ? <Icon size={22} className="text-[#12A3A2]" /> : null}
-                </div>
-                <p className="mb-1 text-xs font-semibold uppercase tracking-[0.18em] text-[#12A3A2]">
-                  {service.eyebrow}
-                </p>
-                <h3 className="font-heading mb-3 text-base font-bold text-[#18232F]">
-                  {service.title}
-                </h3>
-                <p className="mb-6 grow text-sm leading-6 text-[#6B7280]">
-                  {service.summary}
-                </p>
+        {/* Bordered card grid */}
+        <Reveal delay={0.1}>
+          <div className="border border-nerotech-soft-grey">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+              {services.map((service, i) => (
                 <Link
+                  key={service.slug}
                   href={`/services/${service.slug}`}
-                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#12A3A2] transition-colors hover:text-[#0D6E70]"
+                  className={`block p-7 transition-colors hover:bg-nerotech-off-white/50 ${
+                    i < services.length - 1 ? "border-b border-nerotech-soft-grey lg:border-b-0 lg:border-r" : ""
+                  } ${i === 1 ? "sm:border-r border-nerotech-soft-grey" : ""}`}
                 >
-                  Explore pillar <ArrowRight size={14} />
+                  {/* Ghost number */}
+                  <p className="font-heading mb-3.5 text-[34px] font-extrabold leading-none tracking-[-0.04em] text-nerotech-teal/[0.08]">
+                    {String(i + 1).padStart(2, "0")}
+                  </p>
+                  {/* Eyebrow */}
+                  <p className="mb-2 text-[11px] font-bold uppercase tracking-[0.18em] text-nerotech-teal">
+                    {service.eyebrow}
+                  </p>
+                  {/* Title */}
+                  <h3 className="font-heading mb-2.5 text-sm font-semibold leading-[1.45] text-nerotech-charcoal">
+                    {service.title}
+                  </h3>
+                  {/* Description */}
+                  <p className="text-[12.5px] leading-[1.72] text-nerotech-mid-grey">
+                    {service.summary}
+                  </p>
                 </Link>
-              </div>
-            );
-          })}
-        </div>
-      </Container>
+              ))}
+            </div>
+          </div>
+        </Reveal>
+      </div>
     </section>
   );
 }

@@ -3,16 +3,18 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { navItems } from "@/content/navigation";
-import { Button } from "@/components/ui/Button";
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-50 border-b border-[#E5ECEC] bg-white/95 backdrop-blur-sm">
-      <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-5 py-4 sm:px-6 lg:px-8">
+    <header className="sticky top-0 z-50 border-b border-white/[0.07] bg-nerotech-charcoal/95 backdrop-blur-md">
+      <div className="mx-auto flex h-[68px] w-full max-w-7xl items-center justify-between px-5 sm:px-6 lg:px-14">
+        {/* Brand */}
         <Link href="/" className="flex items-center">
           <Image
             src="/brand/logo.png"
@@ -20,27 +22,43 @@ export function Header() {
             width={144}
             height={36}
             priority
+            className="[filter:brightness(0)_invert(1)_opacity(0.9)]"
           />
         </Link>
 
-        <nav className="hidden items-center gap-8 lg:flex" aria-label="Main navigation">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="text-sm font-medium text-[#6B7280] transition-colors hover:text-[#12A3A2]"
-            >
-              {item.label}
-            </Link>
-          ))}
+        {/* Desktop Nav */}
+        <nav className="hidden items-center gap-9 lg:flex" aria-label="Main navigation">
+          {navItems.map((item) => {
+            const isActive = pathname === item.href || (item.href !== "/" && pathname.startsWith(item.href));
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={
+                  isActive
+                    ? "border-b-2 border-nerotech-teal pb-1 text-[13px] font-semibold text-white"
+                    : "text-[13px] font-medium text-white/50 transition-colors hover:text-white"
+                }
+              >
+                {item.label}
+              </Link>
+            );
+          })}
         </nav>
 
+        {/* Desktop CTA */}
         <div className="hidden lg:block">
-          <Button href="/contact">Start a conversation</Button>
+          <Link
+            href="/contact"
+            className="rounded-full border-[1.5px] border-nerotech-teal px-5 py-2 text-[13px] font-semibold text-nerotech-teal transition-colors hover:bg-nerotech-teal/10"
+          >
+            Start a conversation
+          </Link>
         </div>
 
+        {/* Mobile toggle */}
         <button
-          className="flex h-9 w-9 items-center justify-center rounded-lg text-[#18232F] lg:hidden"
+          className="flex h-9 w-9 items-center justify-center rounded-lg text-white lg:hidden"
           onClick={() => setOpen(!open)}
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
@@ -49,23 +67,28 @@ export function Header() {
         </button>
       </div>
 
+      {/* Mobile panel */}
       {open && (
-        <div className="border-t border-[#E5ECEC] bg-white lg:hidden">
+        <div className="border-t border-white/[0.07] bg-nerotech-charcoal lg:hidden">
           <nav className="flex flex-col px-5 py-4" aria-label="Mobile navigation">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="py-3 text-base font-medium text-[#18232F] transition-colors hover:text-[#12A3A2]"
+                className="py-3 text-base text-white transition-colors hover:text-nerotech-teal"
                 onClick={() => setOpen(false)}
               >
                 {item.label}
               </Link>
             ))}
             <div className="mt-4 pb-2">
-              <Button href="/contact" className="w-full justify-center">
+              <Link
+                href="/contact"
+                className="block w-full rounded-full border-[1.5px] border-nerotech-teal py-3 text-center text-sm font-semibold text-nerotech-teal"
+                onClick={() => setOpen(false)}
+              >
                 Start a conversation
-              </Button>
+              </Link>
             </div>
           </nav>
         </div>
