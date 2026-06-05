@@ -17,12 +17,11 @@ export function Header() {
         {/* Brand */}
         <Link href="/" className="flex items-center">
           <Image
-            src="/brand/logo.png"
+            src="/brand/logo-dark.png"
             alt="NeroTech Consulting"
             width={144}
             height={36}
             priority
-            className="[filter:brightness(0)_invert(1)_opacity(0.9)]"
           />
         </Link>
 

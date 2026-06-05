@@ -14,11 +14,10 @@ export function Footer() {
           <div>
             <Link href="/" className="mb-5 flex items-center">
               <Image
-                src="/brand/logo.png"
+                src="/brand/logo-dark.png"
                 alt="NeroTech Consulting"
                 width={144}
                 height={36}
-                style={{ filter: "brightness(0) invert(1)" }}
               />
             </Link>
             <p className="mb-4 max-w-[340px] text-[13px] leading-[1.78] text-white/50">
