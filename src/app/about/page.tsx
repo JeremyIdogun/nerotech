@@ -233,7 +233,7 @@ export default function AboutPage() {
 
           <Stagger gap={0.09} className="grid grid-cols-2 gap-4 lg:grid-cols-4">
             {teamCards.map((card) => (
-              <div key={card.role} className="border border-nerotech-soft-grey p-6">
+              <div key={card.role} className="h-full border border-nerotech-soft-grey p-6">
                 {/* Portrait placeholder */}
                 <div className="relative mb-4.5 flex aspect-square items-center justify-center border border-nerotech-soft-grey bg-gradient-to-br from-nerotech-soft-grey to-nerotech-off-white">
                   <span className="font-heading text-[36px] font-extrabold tracking-[-0.03em] text-nerotech-teal/[0.16]">

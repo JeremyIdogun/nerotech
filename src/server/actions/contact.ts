@@ -24,7 +24,7 @@ export async function submitContact(
 
       await resend.emails.send({
         from: process.env.CONTACT_FROM_EMAIL ?? "NeroTech Website <website@nerotech.com.ng>",
-        to: process.env.CONTACT_TO_EMAIL ?? "hello@nerotech.com.ng",
+        to: process.env.CONTACT_TO_EMAIL ?? "hello@nerotechconsulting.com",
         subject: `New enquiry from ${name} — ${serviceArea}`,
         text: [
           `Name: ${name}`,

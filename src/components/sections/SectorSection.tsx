@@ -45,7 +45,7 @@ export function SectorSection() {
           {sectors.map((sector, i) => (
             <div
               key={sector.name}
-              className="border border-nerotech-soft-grey p-8"
+              className="h-full border border-nerotech-soft-grey p-8"
             >
               {/* Header row with index */}
               <div className="mb-2.5 flex items-start justify-between">
